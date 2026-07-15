@@ -1,0 +1,1 @@
+const r=require('express').Router(),c=require('../controllers/plans'),{auth,roles}=require('../middleware/auth');r.post('/',auth,roles('trainer'),c.assign);module.exports=r;

@@ -1,0 +1,175 @@
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+.login-page{
+    display:flex;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+}
+.hero-section{
+    flex:1;
+    margin:0;
+    padding:70px;
+}
+
+.hero-overlay{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.45);
+}
+
+.hero-content{
+position:relative;
+z-index:5;
+color:white;
+max-width:500px;
+}
+
+.badge{
+display:inline-block;
+padding:8px 18px;
+background:#7CFC00;
+color:black;
+font-weight:bold;
+border-radius:30px;
+margin-bottom:20px;
+}
+
+.hero-content h1{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:90px;
+    line-height:.95;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
+.hero-content p{
+font-size:18px;
+line-height:1.6;
+}
+
+.login-side{
+    flex:0.8;
+    margin:0;
+    background-size:cover;
+    background-position:center;
+}
+
+.glass-card{
+    width:430px;
+    padding:45px;
+    background:rgba(255,255,255,.82);
+    -webkit-backdrop-filter:blur(20px);
+    backdrop-filter:blur(20px);
+    border-radius:30px;
+    border:1px solid rgba(255,255,255,.4);
+    box-shadow:0 30px 80px rgba(0,0,0,.25);
+}
+
+.girl-image{
+width:120px;
+height:120px;
+border-radius:50%;
+display:block;
+margin:auto;
+object-fit:cover;
+border:4px solid #7CFC00;
+margin-bottom:20px;
+}
+
+.glass-card h2{
+text-align:center;
+margin-bottom:10px;
+}
+
+.glass-card p{
+text-align:center;
+margin-bottom:25px;
+color:#666;
+}
+
+form{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+input{
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:14px;
+    background:#eef3f8;
+    font-size:16px;
+}
+
+.login-btn{
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(90deg,#8CFF00,#46C500);
+    color:#111;
+    font-size:18px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.login-btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 15px 35px rgba(120,255,0,.45);
+}
+
+.login-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 30px rgba(124,252,0,.4);
+}
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+.hero-content h1{
+    font-family: 'Bebas Neue', sans-serif;
+}
+.login-btn{
+    width:100%;
+    margin-top:20px;
+    color:#111;
+}
+input{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:12px;
+    background:#eef2f7;
+    font-size:16px;
+    margin-bottom:15px;
+}
+.hero-stats{
+display:flex;
+gap:40px;
+margin-top:40px;
+}
+.bottom-text{
+    text-align:center;
+    margin-top:25px;
+}
+
+.bottom-text button{
+    border:none;
+    background:none;
+    color:#52b300;
+    font-weight:700;
+    cursor:pointer;
+    margin-left:5px;
+}
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+    rgba(0,0,0,.60),
+    rgba(0,0,0,.65)
+    );
+}

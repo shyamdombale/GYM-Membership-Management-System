@@ -1,0 +1,12 @@
+CREATE DATABASE IF NOT EXISTS irongrid; USE irongrid;
+CREATE TABLE users(id INT AUTO_INCREMENT PRIMARY KEY,name VARCHAR(100) NOT NULL,email VARCHAR(150) UNIQUE NOT NULL,password_hash VARCHAR(255) NOT NULL,role ENUM('member','trainer','admin') NOT NULL,created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE members(id INT AUTO_INCREMENT PRIMARY KEY,user_id INT UNIQUE NOT NULL,plan VARCHAR(100),branch VARCHAR(100),status ENUM('Active','Grace Period','Cancelled') DEFAULT 'Active',renews DATE,streak INT DEFAULT 0,FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE);
+CREATE TABLE trainers(id INT AUTO_INCREMENT PRIMARY KEY,user_id INT UNIQUE NOT NULL,specialty VARCHAR(150),branch VARCHAR(100),rating DECIMAL(2,1),FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE);
+CREATE TABLE gym_classes(id INT AUTO_INCREMENT PRIMARY KEY,name VARCHAR(120),trainer_user_id INT,day_of_week VARCHAR(10),start_time TIME,duration INT,capacity INT,branch VARCHAR(100),type VARCHAR(50),FOREIGN KEY(trainer_user_id) REFERENCES users(id));
+CREATE TABLE bookings(id INT AUTO_INCREMENT PRIMARY KEY,member_user_id INT,class_id INT,status ENUM('booked','waitlisted','cancelled') DEFAULT 'booked',created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,UNIQUE KEY uq_booking(member_user_id,class_id),FOREIGN KEY(member_user_id) REFERENCES users(id),FOREIGN KEY(class_id) REFERENCES gym_classes(id));
+CREATE TABLE progress_logs(id INT AUTO_INCREMENT PRIMARY KEY,member_user_id INT,weight DECIMAL(5,2),bench_press DECIMAL(5,2),logged_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,FOREIGN KEY(member_user_id) REFERENCES users(id));
+CREATE TABLE plans(id INT AUTO_INCREMENT PRIMARY KEY,member_user_id INT UNIQUE,trainer_user_id INT,workout TEXT,nutrition TEXT,updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
+CREATE TABLE attendance(id INT AUTO_INCREMENT PRIMARY KEY,member_user_id INT,branch VARCHAR(100),checked_in_at DATETIME);
+CREATE TABLE lockers(id INT AUTO_INCREMENT PRIMARY KEY,code VARCHAR(20),branch VARCHAR(100),status ENUM('free','occupied','maintenance') DEFAULT 'free',member_user_id INT NULL);
+CREATE TABLE payments(id INT AUTO_INCREMENT PRIMARY KEY,member_user_id INT,amount DECIMAL(10,2),status ENUM('Pending','Paid','Failed','Refunded') DEFAULT 'Pending',provider VARCHAR(30),provider_ref VARCHAR(150),paid_at DATETIME NULL);
+CREATE TABLE notifications(id INT AUTO_INCREMENT PRIMARY KEY,member_user_id INT,message VARCHAR(255),type VARCHAR(40),is_read BOOLEAN DEFAULT FALSE,created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);

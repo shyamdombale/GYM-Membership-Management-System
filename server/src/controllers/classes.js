@@ -1,0 +1,1 @@
+const db=require("../config/db");exports.list=async(req,res)=>{const[r]=await db.query(`SELECT c.*,u.name trainer,(SELECT COUNT(*) FROM bookings b WHERE b.class_id=c.id AND b.status='booked') booked FROM gym_classes c LEFT JOIN users u ON u.id=c.trainer_user_id`);res.json(r)};

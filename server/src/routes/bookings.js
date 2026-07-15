@@ -1,0 +1,1 @@
+const r=require('express').Router(),c=require('../controllers/bookings'),{auth,roles}=require('../middleware/auth');r.post('/',auth,roles('member'),c.book);r.delete('/:id',auth,roles('member'),c.cancel);module.exports=r;

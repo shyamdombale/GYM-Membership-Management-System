@@ -1,0 +1,1 @@
+const r=require('express').Router(),c=require('../controllers/progress'),{auth,roles}=require('../middleware/auth');r.get('/',auth,roles('member'),c.list);r.post('/',auth,roles('member'),c.add);module.exports=r;

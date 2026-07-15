@@ -1,0 +1,1 @@
+const r=require('express').Router(),c=require('../controllers/payments'),{auth,roles}=require('../middleware/auth');r.post('/order',auth,roles('member'),c.order);module.exports=r;

@@ -1,0 +1,1 @@
+const r=require('express').Router(),c=require('../controllers/lockers'),{auth}=require('../middleware/auth');r.get('/',auth,c.list);module.exports=r;

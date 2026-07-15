@@ -1,0 +1,1 @@
+const db=require("../config/db");exports.list=async(req,res)=>{const[r]=await db.query("SELECT * FROM lockers ORDER BY branch,code");res.json(r)};

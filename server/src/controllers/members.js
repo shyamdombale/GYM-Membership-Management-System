@@ -1,0 +1,1 @@
+const db=require("../config/db");exports.list=async(req,res)=>{const[r]=await db.query("SELECT m.*,u.name,u.email FROM members m JOIN users u ON u.id=m.user_id");res.json(r)};

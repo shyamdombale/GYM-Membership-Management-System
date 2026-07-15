@@ -1,0 +1,88 @@
+
+:root{
+  --bg:#080b0d;
+  --panel:rgba(22,29,33,.76);
+  --lime:#c8ff3d;
+  --text:#f3f1ea;
+}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 12% 5%,rgba(200,255,61,.10),transparent 28%),
+    radial-gradient(circle at 90% 15%,rgba(94,200,255,.08),transparent 24%),
+    linear-gradient(145deg,#07090a,#10171a 55%,#090c0e);
+  background-attachment:fixed;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.18;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:42px 42px;
+  mask-image:linear-gradient(to bottom,black,transparent 85%);
+}
+*{box-sizing:border-box}
+#root{position:relative;z-index:1}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes glowPulse{0%,100%{box-shadow:0 0 0 rgba(200,255,61,0)}50%{box-shadow:0 0 28px rgba(200,255,61,.13)}}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+@keyframes scan{0%{transform:translateY(0);opacity:.2}50%{opacity:1}100%{transform:translateY(145px);opacity:.2}}
+
+#root>div>div:last-child{animation:fadeUp .55s cubic-bezier(.2,.8,.2,1) both}
+
+button{
+  transition:transform .2s ease,filter .2s ease,box-shadow .2s ease!important;
+}
+button:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.08);
+  box-shadow:0 8px 24px rgba(0,0,0,.22);
+}
+button:active{transform:translateY(0) scale(.98)}
+
+input,textarea,select{transition:border-color .2s ease,box-shadow .2s ease}
+input:focus,textarea:focus,select:focus{
+  border-color:var(--lime)!important;
+  box-shadow:0 0 0 3px rgba(200,255,61,.09);
+  outline:none;
+}
+
+/* Upgrade inline-styled cards without changing React logic */
+#root [style*="background: rgb(27, 35, 40)"],
+#root [style*="background: #1B2328"]{
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+}
+#root [style*="border-radius: 14px"]{
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+  box-shadow:0 14px 40px rgba(0,0,0,.16);
+}
+#root [style*="border-radius: 14px"]:hover{
+  transform:translateY(-3px);
+  border-color:rgba(200,255,61,.28)!important;
+  box-shadow:0 18px 50px rgba(0,0,0,.28),0 0 0 1px rgba(200,255,61,.04);
+}
+
+/* premium top bar */
+#root [style*="position: sticky"]{
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  background:rgba(8,11,13,.82)!important;
+  box-shadow:0 10px 35px rgba(0,0,0,.22);
+}
+
+/* chart entrance */
+.recharts-wrapper{animation:fadeUp .7s .12s ease both}
+
+/* mobile */
+@media(max-width:760px){
+  #root [style*="grid-template-columns: 1.3fr 1fr"],
+  #root [style*="grid-template-columns: 1fr 1fr"],
+  #root [style*="grid-template-columns: 1.4fr 1fr"],
+  #root [style*="grid-template-columns: 0.9fr 1.5fr"]{
+    grid-template-columns:1fr!important;
+  }
+  #root>div>div:last-child{padding-left:12px!important;padding-right:12px!important}
+}
